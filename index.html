@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONGENG - Toko Buku Cerita Dongeng Terbaik</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #F4C430;
+            --dark-yellow: #D4A017;
+            --dark-bg: #1a1a1a;
+            --light-text: #f0f0f0;
+            --accent-dark: #2a2a2a;
+            --text-gray: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(244, 196, 48, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 3rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--primary-yellow);
+            color: var(--dark-bg);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--dark-yellow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(244, 196, 48, 0.3);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 80px;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23FF6B9D;stop-opacity:0.1" /><stop offset="100%" style="stop-color:%23FFA502;stop-opacity:0.1" /></linearGradient></defs><rect fill="url(%23grad)" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20 50 Q40 10 60 50 T100 50" stroke="%23F4C430" stroke-width="0.5" fill="none" opacity="0.1"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-yellow);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            animation: slideInLeft 1s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 1s ease-out 0.4s both;
+        }
+
+        .hero-buttons .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .secondary-button {
+            background: transparent;
+            color: var(--primary-yellow);
+            border: 2px solid var(--primary-yellow);
+        }
+
+        .secondary-button:hover {
+            background: var(--primary-yellow);
+            color: var(--dark-bg);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border-radius: 50%;
+            filter: blur(60px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .book-icon {
+            font-size: 200px;
+            text-align: center;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            background: var(--accent-dark);
+            padding: 5rem 3rem;
+            max-width: 1400px;
+            margin: -5rem auto 0;
+            position: relative;
+            z-index: 10;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .section-intro {
+            max-width: 600px;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .section-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-intro p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: transparent;
+            padding: 2rem;
+            border-left: 3px solid var(--primary-yellow);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.4s; }
+        .feature-card:nth-child(2) { animation-delay: 0.5s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
+        .feature-card:nth-child(4) { animation-delay: 0.7s; }
+
+        .feature-card:hover {
+            border-left-color: var(--dark-yellow);
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* BOOKS SECTION */
+        .books-section {
+            padding: 5rem 3rem;
+            background: var(--dark-bg);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+        }
+
+        .view-all {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .view-all:hover {
+            transform: translateX(10px);
+        }
+
+        .books-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: var(--accent-dark);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+            cursor: pointer;
+        }
+
+        .book-card:nth-child(1) { animation-delay: 0.4s; }
+        .book-card:nth-child(2) { animation-delay: 0.5s; }
+        .book-card:nth-child(3) { animation-delay: 0.6s; }
+        .book-card:nth-child(4) { animation-delay: 0.7s; }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(244, 196, 48, 0.2);
+        }
+
+        .book-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-status {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-yellow);
+            color: var(--dark-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .book-info {
+            padding: 1.5rem;
+        }
+
+        .book-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+        }
+
+        .book-author {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-description {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .book-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(244, 196, 48, 0.1);
+        }
+
+        .book-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+        }
+
+        .book-location {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* STATS SECTION */
+        .stats {
+            background: var(--accent-dark);
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .stat-item:nth-child(1) { animation-delay: 0.4s; }
+        .stat-item:nth-child(2) { animation-delay: 0.5s; }
+        .stat-item:nth-child(3) { animation-delay: 0.6s; }
+        .stat-item:nth-child(4) { animation-delay: 0.7s; }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            padding: 5rem 3rem;
+            background: var(--dark-bg);
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .about-text {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-text a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .about-text a:hover {
+            transform: translateX(5px);
+        }
+
+        /* TESTIMONIAL SECTION */
+        .testimonial {
+            background: var(--accent-dark);
+            padding: 5rem 3rem;
+        }
+
+        .testimonial-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .testimonial-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: var(--dark-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        /* CTA FINAL */
+        .final-cta {
+            padding: 5rem 3rem;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--dark-yellow));
+            color: var(--dark-bg);
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .final-cta .cta-button {
+            background: var(--dark-bg);
+            color: var(--primary-yellow);
+        }
+
+        .final-cta .cta-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark-bg);
+            border-top: 1px solid rgba(244, 196, 48, 0.2);
+            padding: 3rem;
+            color: var(--text-gray);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(244, 196, 48, 0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(244, 196, 48, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-yellow);
+            color: var(--dark-bg);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                height: auto;
+                padding: 2rem 0;
+            }
+
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+
+            .features {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-intro h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .books-container {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem;
+            }
+
+            .about-content {
+                padding: 0 1.5rem;
+            }
+
+            .testimonial-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* LOADING STATE */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(244, 196, 48, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-yellow);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .placeholder-card {
+            background: var(--accent-dark);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">📖 DONGENG</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#buku">Koleksi Buku</a></li>
+                <li><a href="#tentang">Tentang Kami</a></li>
+                <li><a href="#hubungi">Hubungi</a></li>
+            </ul>
+            <a href="#order" class="cta-button">Pesan Sekarang</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Jelajahi Dunia <span>Dongeng Ajaib</span></h1>
+                <p>Temukan koleksi cerita dongeng terbaik, petualangan luar biasa, dan imajinasi tanpa batas. DONGENG menghadirkan magic dalam setiap halaman untuk keluarga Anda.</p>
+                <div class="hero-buttons">
+                    <a href="#buku" class="cta-button">Lihat Koleksi</a>
+                    <button class="secondary-button">🎬 Tonton Video</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="book-icon">📚</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 3rem;">
+            <div class="section-intro">
+                <h2>Kenapa Pilih DONGENG</h2>
+                <p>Kami tidak hanya menjual buku, kami membawa imajinasi ke kehidupan Anda dengan koleksi terbaik dan layanan premium.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Koleksi Lengkap</h3>
+                    <p>Ribuan cerita dari penulis terkenal dunia hingga penulis lokal terbaik</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Kualitas Premium</h3>
+                    <p>Buku berkualitas tinggi dengan ilustrasi indah dan cetakan yang sempurna</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Investasi terbaik untuk pendidikan anak dengan harga yang kompetitif</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Pengiriman Cepat</h3>
+                    <p>Layanan pengiriman ke seluruh nusantara dengan jaminan barang aman</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKS SECTION -->
+    <section class="books-section" id="buku">
+        <div class="section-header">
+            <h2>Koleksi Cerita Terbaik</h2>
+            <a href="#" class="view-all">Lihat Semua → </a>
+        </div>
+
+        <div id="booksContainer" class="books-container">
+            <div class="placeholder-card">
+                <div class="loading"></div>
+            </div>
+            <div class="placeholder-card">
+                <div class="loading"></div>
+            </div>
+            <div class="placeholder-card">
+                <div class="loading"></div>
+            </div>
+            <div class="placeholder-card">
+                <div class="loading"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Koleksi Buku</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Pembaca Setia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Rating Terbaik</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Tahun Pengalaman</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="tentang">
+        <div class="about-content">
+            <div class="about-image">
+                ✨
+            </div>
+            <div class="about-text">
+                <h2>Tentang DONGENG</h2>
+                <p>DONGENG didirikan dengan misi sederhana namun bermakna: membuat cerita dongeng berkualitas tinggi dapat diakses oleh setiap keluarga di Indonesia.</p>
+                <p>Kami percaya bahwa membaca adalah jendela dunia, dan dongeng adalah cara terbaik untuk membuka imajinasi anak-anak.</p>
+                <p>Dengan lebih dari 10 tahun pengalaman, tim kami telah membantu ribuan keluarga menemukan buku yang sempurna untuk mereka.</p>
+                <a href="#">Pelajari Lebih Lanjut →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="testimonial">
+        <div class="testimonial-container">
+            <h2 class="testimonial-title">Apa Kata Pelanggan Kami</h2>
+            <div class="testimonial-content">
+                <div>
+                    <p class="testimonial-text">"Buku-buku dari DONGENG benar-benar mengubah cara anak saya menikmati membaca. Kualitasnya luar biasa dan layanan pelanggan sangat responsif!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SR</div>
+                        <div class="author-info">
+                            <h4>Siti Rahma</h4>
+                            <p>Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-image">
+                    👨‍👩‍👧‍👦
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="order">
+        <h2>Mulai Petualangan Membaca Sekarang</h2>
+        <p>Jangan lewatkan kesempatan untuk memberikan hadiah terbaik kepada orang-orang terkasih</p>
+        <a href="#" class="cta-button">Pesan Sekarang</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📖 DONGENG</h4>
+                <p>Toko buku cerita dongeng terbaik di Indonesia dengan koleksi lengkap dan harga terjangkau.</p>
+                <div class="social-icons">
+                    <a href="#">f</a>
+                    <a href="#">𝕏</a>
+                    <a href="#">in</a>
+                    <a href="#">📸</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Koleksi</h4>
+                <ul>
+                    <li><a href="#">Dongeng Klasik</a></li>
+                    <li><a href="#">Cerita Lokal</a></li>
+                    <li><a href="#">Dongeng Modern</a></li>
+                    <li><a href="#">Buku Edukasi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Perusahaan</h4>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Karir</a></li>
+                    <li><a href="#">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Dukungan</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DONGENG. Semua hak dilindungi. Dibuat dengan ❤️ untuk pecinta dongeng Indonesia.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

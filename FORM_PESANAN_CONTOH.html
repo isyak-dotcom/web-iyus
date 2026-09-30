@@ -1,0 +1,316 @@
+<!-- 
+  CONTOH FORM PESANAN
+  
+  Untuk menambahkan form ini ke website utama:
+  1. Copy HTML di bawah (dari <section> sampai </section>)
+  2. Paste sebelum </body> di index.html
+  3. Atau buat file HTML terpisah dan link ke index.html
+-->
+
+<section class="order-form-section" id="order-form" style="
+    background: var(--accent-dark);
+    padding: 5rem 3rem;
+    margin-top: 3rem;
+">
+    <div style="max-width: 1400px; margin: 0 auto;">
+        <div class="section-intro" style="max-width: 600px; opacity: 0; animation: fadeInUp 0.8s ease-out 0.3s forwards;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Pesan Buku Favorit Anda</h2>
+            <p style="color: var(--text-gray); font-size: 1.1rem;">Isi form di bawah untuk memesan buku dongeng favorit Anda. Tim kami akan menghubungi Anda segera.</p>
+        </div>
+
+        <form id="orderFormMain" style="
+            background: var(--dark-bg);
+            padding: 3rem;
+            border-radius: 15px;
+            max-width: 800px;
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        ">
+            <!-- NAMA -->
+            <div style="margin-bottom: 2rem;">
+                <label for="nama" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Nama Lengkap *</label>
+                <input type="text" id="nama" name="nama" required style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                " placeholder="Nama Anda">
+            </div>
+
+            <!-- EMAIL -->
+            <div style="margin-bottom: 2rem;">
+                <label for="email" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Email *</label>
+                <input type="email" id="email" name="email" required style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                " placeholder="email@contoh.com">
+            </div>
+
+            <!-- NOMOR TELEPON -->
+            <div style="margin-bottom: 2rem;">
+                <label for="nomorTelepon" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Nomor Telepon *</label>
+                <input type="tel" id="nomorTelepon" name="nomorTelepon" required style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                " placeholder="+62 812 3456 7890">
+            </div>
+
+            <!-- ALAMAT -->
+            <div style="margin-bottom: 2rem;">
+                <label for="alamat" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Alamat Pengiriman *</label>
+                <textarea id="alamat" name="alamat" required rows="3" style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    font-family: inherit;
+                    resize: vertical;
+                    transition: all 0.3s ease;
+                " placeholder="Jl. Contoh No. 123, Jakarta, Indonesia"></textarea>
+            </div>
+
+            <!-- BUKU YANG DIPESAN -->
+            <div style="margin-bottom: 2rem;">
+                <label for="bukuDipesan" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Buku yang Dipesan *</label>
+                <select id="bukuDipesan" name="bukuDipesan" required style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                ">
+                    <option value="" disabled selected>-- Pilih Buku --</option>
+                    <option value="Cinderella">Cinderella - Rp 85.000</option>
+                    <option value="Malin Kundang">Malin Kundang - Rp 65.000</option>
+                    <option value="Snow White">Snow White - Rp 85.000</option>
+                    <option value="The Enchanted Garden">The Enchanted Garden - Rp 95.000</option>
+                </select>
+            </div>
+
+            <!-- JUMLAH -->
+            <div style="margin-bottom: 2rem;">
+                <label for="jumlah" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--primary-yellow);
+                ">Jumlah *</label>
+                <input type="number" id="jumlah" name="jumlah" required min="1" max="100" value="1" style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                ">
+            </div>
+
+            <!-- CATATAN TAMBAHAN -->
+            <div style="margin-bottom: 2rem;">
+                <label for="catatan" style="
+                    display: block;
+                    margin-bottom: 0.5rem;
+                    font-weight: 600;
+                    color: var(--text-gray);
+                ">Catatan Tambahan (Opsional)</label>
+                <textarea id="catatan" name="catatan" rows="2" style="
+                    width: 100%;
+                    padding: 0.8rem;
+                    background: var(--accent-dark);
+                    border: 1px solid rgba(244, 196, 48, 0.2);
+                    border-radius: 8px;
+                    color: var(--light-text);
+                    font-size: 1rem;
+                    font-family: inherit;
+                    resize: vertical;
+                    transition: all 0.3s ease;
+                " placeholder="Contoh: Mohon bungkus kado, dll."></textarea>
+            </div>
+
+            <!-- CHECKBOX AGREE -->
+            <div style="margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
+                <input type="checkbox" id="agree" name="agree" required style="
+                    width: 20px;
+                    height: 20px;
+                    accent-color: var(--primary-yellow);
+                    cursor: pointer;
+                ">
+                <label for="agree" style="color: var(--text-gray); cursor: pointer;">
+                    Saya setuju dengan syarat & ketentuan pemesanan
+                </label>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" style="
+                    background: var(--primary-yellow);
+                    color: var(--dark-bg);
+                    padding: 1rem 2rem;
+                    border: none;
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    flex: 1;
+                ">
+                    Pesan Sekarang
+                </button>
+                <button type="reset" style="
+                    background: transparent;
+                    color: var(--primary-yellow);
+                    padding: 1rem 2rem;
+                    border: 2px solid var(--primary-yellow);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    flex: 1;
+                ">
+                    Bersihkan
+                </button>
+            </div>
+
+            <!-- LOADING STATE -->
+            <div id="formStatus" style="
+                margin-top: 1rem;
+                text-align: center;
+                display: none;
+                padding: 1rem;
+                border-radius: 8px;
+            "></div>
+        </form>
+    </div>
+</section>
+
+<style>
+    input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: var(--primary-yellow) !important;
+        box-shadow: 0 0 0 3px rgba(244, 196, 48, 0.1) !important;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+    }
+
+    button:active {
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    // Handle form submission
+    document.getElementById('orderFormMain').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        
+        // Get form data
+        const formData = {
+            action: 'addOrder',
+            nama: document.getElementById('nama').value,
+            email: document.getElementById('email').value,
+            nomorTelepon: document.getElementById('nomorTelepon').value,
+            alamat: document.getElementById('alamat').value,
+            bukuDipesan: document.getElementById('bukuDipesan').value,
+            jumlah: document.getElementById('jumlah').value,
+            catatan: document.getElementById('catatan').value,
+            tanggal: new Date().toISOString()
+        };
+
+        // Show loading
+        formStatus.style.display = 'block';
+        formStatus.style.background = 'rgba(244, 196, 48, 0.2)';
+        formStatus.style.color = 'var(--primary-yellow)';
+        formStatus.textContent = '⏳ Mengirim pesanan...';
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const result = await response.json();
+            
+            if (result.success) {
+                formStatus.style.background = 'rgba(76, 175, 80, 0.2)';
+                formStatus.style.color = '#4caf50';
+                formStatus.textContent = '✅ Pesanan berhasil dikirim! Tim kami akan menghubungi Anda dalam 24 jam.';
+                document.getElementById('orderFormMain').reset();
+                
+                // Hide message setelah 5 detik
+                setTimeout(() => {
+                    formStatus.style.display = 'none';
+                }, 5000);
+            } else {
+                formStatus.style.background = 'rgba(244, 67, 54, 0.2)';
+                formStatus.style.color = '#f44336';
+                formStatus.textContent = '❌ Error: ' + (result.message || 'Gagal mengirim pesanan');
+            }
+        } catch (error) {
+            formStatus.style.background = 'rgba(244, 67, 54, 0.2)';
+            formStatus.style.color = '#f44336';
+            formStatus.textContent = '❌ Error: ' + error.message;
+            console.error('Error:', error);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+</script>
